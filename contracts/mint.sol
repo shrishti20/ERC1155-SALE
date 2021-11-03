@@ -1319,4 +1319,9 @@ function mintNFT(string memory tokenuri) external returns(uint256){
     {
         _tokenURIs[tokenId] = _tokenURI;
     }
+    
+  function withdrawFunds(address wallet) external onlyOwner{
+        uint256 balanceOfContract = address(this).balance;
+        payable(wallet).transfer(balanceOfContract);
+    }
 }
